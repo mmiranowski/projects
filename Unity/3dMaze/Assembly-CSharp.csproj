@@ -61,8 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Bamboos.cs" />
-    <Compile Include="Assets\HitPortal.cs" />
+    <Compile Include="Assets\Scripts\Bamboos.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CanvasButtons.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="Assets\Scripts\HitCoins.cs" />
     <Compile Include="Assets\Scripts\HitEndPoint.cs" />
     <Compile Include="Assets\Scripts\HitEnemy.cs" />
+    <Compile Include="Assets\Scripts\HitPortal.cs" />
     <Compile Include="Assets\Scripts\InDangerZone.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
