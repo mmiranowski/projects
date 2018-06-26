@@ -20,7 +20,7 @@ public class CanvasButtons : MonoBehaviour {
 
     public void ResetLevel()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LevelSelectMenu()

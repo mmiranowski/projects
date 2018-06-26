@@ -7,7 +7,7 @@ public class HitPortal : MonoBehaviour {
     public Transform portal1Object;
     public Transform portal2Object;
 
-    public Transform camera;
+    public Transform cam;
 
     private CharacterController controller;
 
@@ -25,7 +25,7 @@ public class HitPortal : MonoBehaviour {
         if (other.gameObject.name == "Portal1Object")
         {
             gameObject.transform.position = portal2pos;
-            camera.transform.position = portal2pos;
+            cam.transform.position = portal2pos;
         }
     }
 }

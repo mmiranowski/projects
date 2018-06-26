@@ -13,24 +13,30 @@ public class Movement : MonoBehaviour {
     private float moveSpeed;
     public int state; // has to be public so cameraFollow can access it
     private float gravityFactor = -10.0f;
+    private bool playerMoves;
     //public bool enemyBehind;
 
     //touch screen varaible
     private float minSwipeDistY = 300.0f;
     private float minSwipeDistX = 300.0f;
     Vector2 startTouchPos;
-	// Use this for initialization
-	void Start () {
+
+    private Vector2 touchDiff;
+    private float touchMagnitude;
+
+    // Use this for initialization
+    void Start () {
         controller = GetComponent<CharacterController>();
         moveSpeed = 30.0f;
         state = 0;
+        playerMoves = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //swipeControl();
-        keyboardControl();
+        swipeControl();
+        //keyboardControl();
         gravity();
         //move
         controller.Move(moveVector * Time.fixedDeltaTime);
@@ -39,7 +45,33 @@ public class Movement : MonoBehaviour {
 
     void swipeControl()
     {
-        moveSpeed = moveSpeed * 2;
+        if (playerMoves)
+        {
+            if (state == 0) // move forward
+            {
+                moveVector.z = moveSpeed;
+                moveVector.x = 0;
+            }
+            else if (state == 1) // move left
+            {
+                moveVector.z = 0;
+                moveVector.x = -moveSpeed;
+            }
+            else if (state == 2) // move backward
+            {
+                moveVector.z = -moveSpeed;
+                moveVector.x = 0;
+            }
+            else // (state == 3 ) move right
+            {
+                moveVector.z = 0;
+                moveVector.x = moveSpeed;
+            }
+        }
+        else
+        {
+            moveVector = Vector3.zero;
+        }
         /***************************************************
         * directional state machine:
         *  state = 0 -> forward
@@ -56,27 +88,12 @@ public class Movement : MonoBehaviour {
                     startTouchPos = touch.position;
                     break;
 
-                case TouchPhase.Stationary:
-                    if (state == 0) // move forward
-                    {
-                        moveVector.z = moveSpeed;
-                    }
-                    else if (state == 1) // move left
-                    {
-                        moveVector.x = -moveSpeed;
-                    }
-                    else if (state == 2) // move backward
-                    {
-                        moveVector.z = -moveSpeed;
-                    }
-                    else // (state == 3 ) move right
-                    {
-                        moveVector.x =  moveSpeed;
-                    }
-                    break;
-
                 case TouchPhase.Ended:
-                    moveVector = Vector3.zero;
+                    //moveVector = Vector3.zero;
+                    if ((startTouchPos - touch.position).magnitude < 10)
+                    {
+                        playerMoves = !playerMoves;
+                    }
                     float swipeDistVertical = (new Vector3(0, touch.position.y, 0) - new Vector3(0, startTouchPos.y, 0)).magnitude;
                     if (swipeDistVertical > minSwipeDistY)
                     {
@@ -122,10 +139,11 @@ public class Movement : MonoBehaviour {
                             //Debug.Log("Swipe Left");
                         }
                     }
-                    break;
 
+                    break;
             }
-            
+
+
         }
     }
 
