@@ -35,8 +35,8 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        swipeControl();
-        //keyboardControl();
+        //swipeControl();
+        keyboardControl();
         gravity();
         //move
         controller.Move(moveVector * Time.fixedDeltaTime);
