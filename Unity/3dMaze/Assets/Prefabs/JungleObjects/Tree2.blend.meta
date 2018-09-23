@@ -11,6 +11,8 @@ ModelImporter:
     400004: Trunk
     2100000: unnamed
     2100002: Material
+    2100004: TreeTop
+    2100006: Trunk
     2300000: TreeTop
     2300002: Trunk
     3300000: TreeTop
@@ -19,7 +21,17 @@ ModelImporter:
     4300002: Trunk
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TreeTop
+    second: {fileID: 2100000, guid: a1f6aca1e89167845aa79e375d29e389, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trunk
+    second: {fileID: 2100000, guid: f54053a8e16b5df46af768e9a96821d1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

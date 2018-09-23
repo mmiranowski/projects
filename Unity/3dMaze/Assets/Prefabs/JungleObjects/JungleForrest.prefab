@@ -962,7 +962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978425844403748}
   m_Layer: 0
-  m_Name: TreesBackground
+  m_Name: JungleForrest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
